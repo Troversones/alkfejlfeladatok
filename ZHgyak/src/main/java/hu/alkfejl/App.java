@@ -1,22 +1,28 @@
 package hu.alkfejl;
 
+import hu.alkfejl.model.JegyzoKonyv;
 import hu.alkfejl.view.JegyzoKonyvFelvitel;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+
+import java.util.List;
 
 /**
  * JavaFX App
  */
 public class App extends Application {
+    public static List<JegyzoKonyv> jegyzoKonyvek;
+
+    public static void setJegyzoKonyvek(JegyzoKonyv list) {
+        jegyzoKonyvek.add(list);
+    }
 
     @Override
     public void start(Stage stage) {
@@ -30,7 +36,16 @@ public class App extends Application {
         MenuItem segitseg = new MenuItem("Segítség");
         menupont.getItems().addAll(felvitel, segitseg);
 
-        root.getChildren().addAll(menu);
+        TableView<JegyzoKonyv> dataListing = new TableView<>();
+
+        TableColumn<JegyzoKonyv, String> cimColumn = new TableColumn<>("Cím: ");
+        cimColumn.setCellValueFactory(new PropertyValueFactory<>("cim"));
+
+        TableColumn<JegyzoKonyv, String> datumColumn = new TableColumn<>("Dátum: ");
+        datumColumn.setCellValueFactory(new PropertyValueFactory<>("datum"));
+
+        dataListing.getColumns().addAll(cimColumn, datumColumn);
+        root.getChildren().addAll(menu, dataListing);
 
         felvitel.setOnAction(new EventHandler<ActionEvent>() {
             @Override

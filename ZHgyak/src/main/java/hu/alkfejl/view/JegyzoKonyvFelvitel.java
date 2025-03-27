@@ -1,5 +1,6 @@
 package hu.alkfejl.view;
 
+import hu.alkfejl.App;
 import hu.alkfejl.controller.JegyzoKonyvController;
 import hu.alkfejl.model.JegyzoKonyv;
 import javafx.event.ActionEvent;
@@ -52,13 +53,12 @@ public class JegyzoKonyvFelvitel extends Stage {
                     ujJK.setLeiras(leirasBevitel.getText());
 
                     JegyzoKonyvController.getInstance().add(ujJK);
+                    App.setJegyzoKonyvek(ujJK);
                 }
             }
         });
 
-        TableView<JegyzoKonyv> asd = new TableView<>();
-
-        pane.addColumn(1,cimBevitel, jegyzoBevitel, datumBevitel, leirasBevitel, felvitel, asd);
+        pane.addColumn(1,cimBevitel, jegyzoBevitel, datumBevitel, leirasBevitel, felvitel);
         Scene sc = new Scene(pane);
         this.setScene(sc);
         show();
