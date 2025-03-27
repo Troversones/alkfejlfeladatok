@@ -11,6 +11,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 import java.util.List;
 
@@ -26,7 +27,7 @@ public class JegyzoKonyvFelvitel extends Stage {
         Text datum = new Text("Dátum: ");
         Text leiras = new Text("Leírás: ");
 
-        pane.addColumn(0, cim, leiras, datum, jegyzo);
+        pane.addColumn(0, cim, jegyzo, datum, leiras);
 
         TextField cimBevitel = new TextField();
         TextField jegyzoBevitel = new TextField();
@@ -54,6 +55,7 @@ public class JegyzoKonyvFelvitel extends Stage {
 
                     JegyzoKonyvController.getInstance().add(ujJK);
                     App.setJegyzoKonyvek(ujJK);
+
                 }
             }
         });
