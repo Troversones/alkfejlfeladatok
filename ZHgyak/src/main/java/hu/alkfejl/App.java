@@ -86,7 +86,13 @@ public class App extends Application {
                 alert.setTitle("Adattagok leirasa");
                 alert.setHeaderText("Az adattagok és jelentésük:");
                 alert.setContentText("Cim: a Jegyzokonyv cime" +
-                        "\r" + "Datum: a jegyzokonyv létrehozasanak datuma");
+                        "\r" +
+                        "Datum: a jegyzokonyv létrehozasanak datuma" +
+                        "\r" +
+                        "Jegyző: az adott jegyzokonyv szerzője" +
+                        "\r" +
+                        "Leírás: az adott jegyzokonyv leirasa"
+                );
 
                 alert.showAndWait();
             }
